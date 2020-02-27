@@ -16,7 +16,7 @@ const AccountScreenStacks = createStackNavigator({
       title: "Login"
     })
   },
-  Reguster: {
+  Register: {
     screen: RegisterScreen,
     navigationOptions: () => ({
       title: "Registro"
