@@ -7,7 +7,7 @@ import * as firebase from "firebase";
 import Loading from "../Loading";
 
 function RegisterForm(props) {
-  const { toastRef, Navigation } = props;
+  const { toastRef, navigation } = props;
   const [hidePassword, setHidePassword] = useState(true);
   const [hideRepeatPassword, setHideRepeatPassword] = useState(true);
   const [isVisibleLoading, setIsVisibleLoading] = useState(false);
