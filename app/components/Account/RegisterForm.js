@@ -30,7 +30,7 @@ function RegisterForm(props) {
             .auth()
             .createUserWithEmailAndPassword(email, password)
             .then(() => {
-              navigation.navigate("MyAccount");
+              navigation.navigate("Account");
             })
             .catch(() => {
               toastRef.current.show(
