@@ -6,8 +6,8 @@ import * as firebase from "firebase";
 export default function UserLogged() {
   return (
     <View>
-      <Text>UserLogged.</Text>
-      <Button title="Cerrar Sesión" onPress={() => firebase.auth().signOut()} />
+      <Text>UserLogged...</Text>
+      <Button title="Cerrar Sesión." onPress={() => firebase.auth().signOut} />
     </View>
   );
 }

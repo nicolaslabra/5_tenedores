@@ -1,10 +1,9 @@
 import React from "react";
-import { StyleSheet, Vire, ScrollView, Text, Image, View } from "react-native";
+import { StyleSheet, View, ScrollView, Text, Image } from "react-native";
 import { Divider } from "react-native-elements";
 
 export default function Login(props) {
   const { navigation } = props;
-
   return (
     <ScrollView>
       <Image
@@ -13,12 +12,12 @@ export default function Login(props) {
         resizeMode="contain"
       />
       <View style={styles.viewContainer}>
-        <Text>Form Login...</Text>
+        <Text>Login....</Text>
         <CreateAccount navigation={navigation} />
       </View>
-      <Divider style={styles.divider} />
+      <Divider style={styles.divider}></Divider>
       <View style={styles.viewContainer}>
-        <Text>Login Facebook...</Text>
+        <Text>LoginFacebook...</Text>
       </View>
     </ScrollView>
   );
@@ -34,7 +33,7 @@ function CreateAccount(props) {
         style={styles.btnRegister}
         onPress={() => navigation.navigate("Register")}
       >
-        Regístrate.
+        Regístrarse
       </Text>
     </Text>
   );

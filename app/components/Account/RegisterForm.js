@@ -2,51 +2,43 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Input, Icon, Button } from "react-native-elements";
 import { validateEmail } from "../../utils/Validation";
-import { withNavigation } from "react-navigation";
 import * as firebase from "firebase";
-import Loading from "../Loading";
 
-function RegisterForm(props) {
-  const { toastRef, navigation } = props;
+export default function RegisterForm() {
   const [hidePassword, setHidePassword] = useState(true);
   const [hideRepeatPassword, setHideRepeatPassword] = useState(true);
-  const [isVisibleLoading, setIsVisibleLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
   const register = async () => {
-    setIsVisibleLoading(true);
     if (!email || !password || !repeatPassword) {
-      toastRef.current.show("Todos los campos son obligatorios.");
+      console.log("Todos los campos son obligatorios.");
     } else {
       if (!validateEmail(email)) {
-        toastRef.current.show("El email no es correcto");
+        console.log("El email no es correcto.");
       } else {
         if (password !== repeatPassword) {
-          toastRef.current.show("Las contraseñas no coinciden.");
+          console.log("Las Contraseñas no coinciden.");
         } else {
           await firebase
             .auth()
             .createUserWithEmailAndPassword(email, password)
             .then(() => {
-              navigation.navigate("Account");
+              console.log("Usuario Creado Correctamente.");
             })
             .catch(() => {
-              toastRef.current.show(
-                "Error al crear la cuenta, intentelo más tarde."
-              );
+              console.log("Error al crear la cuenta, intentelo más tarde.");
             });
         }
       }
     }
-    setIsVisibleLoading(false);
   };
 
   return (
     <View style={styles.formContainer}>
       <Input
-        placeholder="Correo Electronico."
+        placeholder="Correo electrónico"
         containerStyle={styles.inputForm}
         onChange={e => setEmail(e.nativeEvent.text)}
         rightIcon={
@@ -58,7 +50,7 @@ function RegisterForm(props) {
         }
       />
       <Input
-        placeholder="Contraseña."
+        placeholder="Contraseña"
         password={true}
         secureTextEntry={hidePassword}
         containerStyle={styles.inputForm}
@@ -73,7 +65,7 @@ function RegisterForm(props) {
         }
       />
       <Input
-        placeholder="Repetir contraseña."
+        placeholder="Repetir contraseña"
         password={true}
         secureTextEntry={hideRepeatPassword}
         containerStyle={styles.inputForm}
@@ -88,16 +80,14 @@ function RegisterForm(props) {
         }
       />
       <Button
-        title="Unirse"
+        title="Unirse."
         containerStyle={styles.btnContainerRegister}
         buttonStyle={styles.btnRegister}
         onPress={register}
       />
-      <Loading text="Creando Cuenta" isVisible={isVisibleLoading} />
     </View>
   );
 }
-export default withNavigation(RegisterForm);
 
 const styles = StyleSheet.create({
   formContainer: {
@@ -118,6 +108,6 @@ const styles = StyleSheet.create({
     width: "95%"
   },
   btnRegister: {
-    backgroundColor: "#00a680"
+    backgroundColor: "#D0846D"
   }
 });

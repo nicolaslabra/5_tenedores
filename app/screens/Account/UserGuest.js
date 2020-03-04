@@ -6,7 +6,7 @@ import { withNavigation } from "react-navigation";
 function UserGuest(props) {
   const { navigation } = props;
   return (
-    <ScrollView styles={styles.viewBody} centerContent={true}>
+    <ScrollView style={styles.viewBody} centerContent={true}>
       <Image
         source={require("../../../assets/img/user-guest.jpg")}
         style={styles.image}
@@ -22,9 +22,9 @@ function UserGuest(props) {
         <Button
           buttonStyle={styles.btnStyle}
           containerStyle={styles.btnContainer}
-          title="Ver tu perfil."
+          title="Ver tu Perfil."
           onPress={() => navigation.navigate("Login")}
-        />
+        ></Button>
       </View>
     </ScrollView>
   );
